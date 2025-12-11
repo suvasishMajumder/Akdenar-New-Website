@@ -5,7 +5,6 @@ export interface IContact extends Document {
     email: string;
     phone?: string;
     message: string;
-    status: 'UNREAD' | 'READ' | 'REPLIED' | 'ARCHIVED';
     createdAt: Date;
     updatedAt: Date;
 }
@@ -43,11 +42,6 @@ const ContactSchema: Schema = new Schema(
             trim: true,
             minlength: [10, 'Message must be at least 10 characters'],
             maxlength: [5000, 'Message cannot exceed 5000 characters'],
-        },
-        status: {
-            type: String,
-            enum: ['UNREAD', 'READ', 'REPLIED', 'ARCHIVED'],
-            default: 'UNREAD',
         },
     },
     {

@@ -1,120 +1,82 @@
 import { NextRequest, NextResponse } from "next/server";
+import connectDB from "@/lib/mongodb";
+import Job from "@/models/job";
 
-let jobs = [
-  {
-    id: "1",
-    title: "Product Manager",
-    department: "Product",
-    description:
-      "Drive product strategy for solutions that impact millions. Collaborate with cross-functional teams to identify and solve pressing global challenges.",
-    location: "San Francisco",
-    type: "Full-time",
-    category: "Product",
-    createdAt: new Date().toISOString(),
-  },
-  {
-    id: "2",
-    title: "Data Scientist",
-    department: "Data & Analytics",
-    description:
-      "Leverage data to uncover insights that drive meaningful impact. Build models and systems that help solve complex real-world problems at scale.",
-    location: "Boston / Remote",
-    type: "Full-time",
-    category: "Data & Analytics",
-    createdAt: new Date().toISOString(),
-  },
-];
 export async function GET(
-  request: NextRequest,
+  req: NextRequest,
   { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    await connectDB();
     const { id } = await params;
-    const job = jobs.find((j) => j.id === id);
+    const job = await Job.findById(id);
 
     if (!job) {
-      return NextResponse.json({ error: "Job not found" }, { status: 404 });
+      return NextResponse.json(
+        { success: false, error: "Job not found" },
+        { status: 404 }
+      );
     }
 
-    return NextResponse.json(
-      {
-        success: true,
-        job,
-      },
-      { status: 200 }
-    );
+    return NextResponse.json({ success: true, data: job });
   } catch (error) {
-    console.error("Get job error:", error);
     return NextResponse.json(
-      { error: "Internal server error" },
+      { success: false, error: "Failed to fetch job" },
       { status: 500 }
     );
   }
 }
 
 export async function PUT(
-  request: NextRequest,
+  req: NextRequest,
   { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    await connectDB();
     const { id } = await params;
-    const body = await request.json();
+    const body = await req.json();
 
-    const index = jobs.findIndex((j) => j.id === id);
+    const job = await Job.findByIdAndUpdate(id, body, {
+      new: true,
+      runValidators: true,
+    });
 
-    if (index === -1) {
-      return NextResponse.json({ error: "Job not found" }, { status: 404 });
+    if (!job) {
+      return NextResponse.json(
+        { success: false, error: "Job not found" },
+        { status: 404 }
+      );
     }
 
-    jobs[index] = {
-      ...jobs[index],
-      ...body,
-      updatedAt: new Date().toISOString(),
-    };
-
+    return NextResponse.json({ success: true, data: job });
+  } catch (error: any) {
     return NextResponse.json(
-      {
-        success: true,
-        message: "Job updated successfully",
-        job: jobs[index],
-      },
-      { status: 200 }
-    );
-  } catch (error) {
-    console.error("Update job error:", error);
-    return NextResponse.json(
-      { error: "Internal server error" },
-      { status: 500 }
+      { success: false, error: error.message || "Failed to update job" },
+      { status: 400 }
     );
   }
 }
 
 export async function DELETE(
-  request: NextRequest,
+  req: NextRequest,
   { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    await connectDB();
     const { id } = await params;
+    const job = await Job.findByIdAndDelete(id);
 
-    const index = jobs.findIndex((j) => j.id === id);
-
-    if (index === -1) {
-      return NextResponse.json({ error: "Job not found" }, { status: 404 });
+    if (!job) {
+      return NextResponse.json(
+        { success: false, error: "Job not found" },
+        { status: 404 }
+      );
     }
 
-    jobs = jobs.filter((j) => j.id !== id);
-
-    return NextResponse.json(
-      {
-        success: true,
-        message: "Job deleted successfully",
-      },
-      { status: 200 }
-    );
+    return NextResponse.json({ success: true, message: "Job deleted successfully" });
   } catch (error) {
-    console.error("Delete job error:", error);
     return NextResponse.json(
-      { error: "Internal server error" },
+      { success: false, error: "Failed to delete job" },
       { status: 500 }
     );
   }

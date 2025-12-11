@@ -51,42 +51,6 @@ export async function validateBody<T>(
   }
 }
 
-// Validate query parameters
-export function validateQuery<T>(
-  schema: ZodType<T>,
-  request: Request
-): { success: true; data: T } | NextResponse {
-  try {
-    const url = new URL(request.url);
-    const params = Object.fromEntries(url.searchParams.entries());
-
-    const result = schema.safeParse(params);
-
-    if (!result.success) {
-      const errors = result.error.issues.map(
-        (err) => `${err.path.join(".")}: ${err.message}`
-      );
-      return NextResponse.json(
-        {
-          success: false,
-          errors,
-        },
-        { status: 400 }
-      );
-    }
-
-    return { success: true, data: result.data };
-  } catch (error) {
-    return NextResponse.json(
-      {
-        success: false,
-        error: "Invalid query parameters",
-      },
-      { status: 400 }
-    );
-  }
-}
-
 // Sanitize data (XSS protection)
 export function sanitizeData<T extends Record<string, any>>(data: T): T {
   const sanitized: any = {};

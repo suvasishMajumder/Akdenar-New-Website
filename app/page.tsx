@@ -1,5 +1,5 @@
-import Footer from '@/components/Footer';
-import Link from 'next/link'
+import Footer from "@/components/Footer";
+import Link from "next/link";
 
 const page = () => {
   return (
@@ -14,16 +14,20 @@ const page = () => {
       </main>
       <Footer />
     </>
-  )
-}
+  );
+};
 
-export default page
+export default page;
 
 function HeroSection() {
   return (
     <section className="w-full flex lg:mt-6 justify-center my-14 md:mt-18 md:mb-14 lg:min-h-screen items-center relative overflow-hidden">
       <div className="h-[calc(100vh-6rem)] md:h-auto  mt-5 sm:mt-0 mx-2 sm:mx-0 lg:h-[calc(100vh-10rem)] w-full relative">
-        <img src="/home-page/hero-section-image.png" alt="" className="h-full w-full object-cover rounded-3xl overflow-hidden" />
+        <img
+          src="/home-page/hero-section-image.png"
+          alt=""
+          className="h-full w-full object-cover rounded-3xl overflow-hidden"
+        />
         {/* Glassmorphism Text Overlay */}
         <div className="absolute top-0  left-0 w-full md:w-1/2 h-full ">
           <div className="p-8 md:p-10 flex flex-col justify-center items-center bg-white/10 backdrop-blur-2xl rounded-3xl h-full ">
@@ -31,21 +35,26 @@ function HeroSection() {
             <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight">
               Akdenar isn&apos;t just a name
               <br />
-              <span className="text-white/95 font-semibold">it stands for trust</span>
+              <span className="text-white/95 font-semibold">
+                it stands for trust
+              </span>
               <br />
-              <span className="text-white/95 font-semibold">and efficiency.</span>
+              <span className="text-white/95 font-semibold">
+                and efficiency.
+              </span>
             </h1>
 
             {/* Description */}
             <p className="mt-6 text-white/90 text-base md:text-lg leading-relaxed">
               Akdenar is a dynamic parent company dedicated to building and
-              scaling innovative Verticals in instant commerce and multi-domain services.
+              scaling innovative Verticals in instant commerce and multi-domain
+              services.
             </p>
 
             {/* Buttons */}
-            <div className="flex flex-wrap gap-4 mt-10">
+            <div className="flex flex-wrap gap-4 mt-10 w-full">
               <Link
-                href="#explore"
+                href="/about"
                 className="
                                 bg-orange-500 text-white px-8 py-3.5 rounded-full text-sm font-semibold
                                 transition-all duration-300 hover:bg-orange-600 hover:scale-105
@@ -57,7 +66,7 @@ function HeroSection() {
               </Link>
 
               <Link
-                href="/get-in-touch"
+                href="/contact"
                 className="
                                 bg-white/20 text-white px-8 py-3.5 rounded-full text-sm font-semibold
                                 backdrop-blur-sm
@@ -107,10 +116,17 @@ function VerticalsSection() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-6xl">
         {verticals.map((item, index) => (
-          <div key={index} className="rounded-xl p-8 bg-[#F8FAFC] border border-gray-200 shadow-inner hover:shadow-xl transition hover:bg-white">
+          <div
+            key={index}
+            className="rounded-xl p-8 bg-[#F8FAFC] border border-gray-200 shadow-inner hover:shadow-xl transition hover:bg-white"
+          >
             {/* Header */}
             <div className="flex items-center gap-4 mb-6">
-              <img src={item.logo} className="h-6 md:h-9 w-auto" alt={item.title} />
+              <img
+                src={item.logo}
+                className="h-6 md:h-9 w-auto"
+                alt={item.title}
+              />
             </div>
 
             {/* Body */}
@@ -132,27 +148,25 @@ function VerticalsSection() {
 function MissionVision() {
   return (
     <section className="w-full px-2 md:px-12 py-16 flex flex-col gap-20 ">
-
       {/* ------------------ MISSION ------------------ */}
       <div className="bg-white rounded-3xl p-6 md:p-12 shadow-sm border border-gray-200">
-
         <div className="inline-flex flex-col mt-6 mb-4">
           <h2 className="text-2xl md:text-3xl font-bold">Our Mission</h2>
           <div className="h-1 bg-orange-500 rounded-full mt-2"></div>
         </div>
         <div className="flex items-center lg:flex-row flex-col gap-20 justify-center">
-
           {/* Text */}
           <p className="text-gray-700 leading-relaxed text-sm md:text-base">
             To build reliable, accessible, and technology-driven solutions that
             simplify everyday life in India.
-            <br /><br />
-            We aim to empower individuals, businesses, and communities by creating
-            digital ecosystems that deliver convenience, efficiency, and
-            high-quality services across commerce, innovation, and multi-domain
-            operations. Through integrity, innovation, and customer-centricity,
-            we strive to positively impact millions of lives while fostering
-            sustainable growth and opportunities.
+            <br />
+            <br />
+            We aim to empower individuals, businesses, and communities by
+            creating digital ecosystems that deliver convenience, efficiency,
+            and high-quality services across commerce, innovation, and
+            multi-domain operations. Through integrity, innovation, and
+            customer-centricity, we strive to positively impact millions of
+            lives while fostering sustainable growth and opportunities.
           </p>
 
           {/* Illustration */}
@@ -171,7 +185,6 @@ function MissionVision() {
         </div>
 
         <div className="flex items-center lg:flex-row flex-col-reverse gap-20 justify-center">
-
           {/* Illustration */}
           <img
             src="/home-page/ourmission2.png"
@@ -184,18 +197,19 @@ function MissionVision() {
             To become one of India’s most trusted and forward-thinking
             conglomerates, shaping the future through innovation, speed, and
             service excellence.
-            <br /><br />
+            <br />
+            <br />
             We aspire to lead in the sectors we operate in—rapid commerce,
             digital services, and technological development—while continuously
             expanding into new domains that enhance modern living.
-            <br /><br />
+            <br />
+            <br />
             Our long-term vision is to create a unified network of platforms
             that enrich everyday experiences, empower local economies, and
             inspire progress across the country.
           </p>
         </div>
       </div>
-
     </section>
   );
 }
@@ -224,7 +238,6 @@ function CultureValues() {
 
   return (
     <section className="w-full rounded-xl py-20 px-6 md:px-12 bg-gradient-to-b from-[#F7F9FF] to-white flex flex-col items-center">
-
       {/* Heading */}
       <div className="text-center max-w-2xl mb-16">
         <h2 className="text-3xl md:text-4xl font-bold mb-4">
@@ -266,7 +279,6 @@ function CultureValues() {
           className="rounded-2xl shadow-md object-cover w-full h-64 md:h-80"
         />
       </div>
-
     </section>
   );
 }
@@ -307,7 +319,6 @@ function OurJourney() {
 
   return (
     <section className="w-full px-2 md:px-10 flex flex-col items-center">
-
       {/* Heading */}
       <div className="text-center max-w-2xl mb-16">
         <h2 className="text-3xl md:text-4xl font-bold mb-3">Our Journey</h2>
@@ -318,14 +329,12 @@ function OurJourney() {
 
       {/* Timeline */}
       <div className="relative w-full max-w-4xl">
-
         {/* Vertical Line */}
         <div className="absolute left-8 md:left-12 top-0 h-full w-[2px] bg-gray-300"></div>
 
         <div className="space-y-10">
           {timeline.map((item, index) => (
             <div key={index} className="relative pl-20 md:pl-28">
-
               {/* Dot (Year Circle) */}
               <div className="absolute left-3 md:left-7 w-10 h-10 rounded-full bg-blue-600 text-white flex items-center justify-center font-semibold shadow-md">
                 {item.year}
@@ -338,11 +347,9 @@ function OurJourney() {
                   {item.desc}
                 </p>
               </div>
-
             </div>
           ))}
         </div>
-
       </div>
     </section>
   );
@@ -351,19 +358,18 @@ function OurJourney() {
 function WorkingAtAkdenar() {
   return (
     <section className="w-full px-6 md:px-12 py-20">
-
       {/* Heading */}
       <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
         Working at Akdenar
       </h2>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center max-w-6xl mx-auto">
-
         {/* Left Content */}
         <div>
           <p className="text-gray-700 text-sm md:text-base leading-relaxed mb-6 max-w-md">
-            At Akdenar Company, we bring together talented employees from various
-            regions of India to collaborate and produce exceptional work.
+            At Akdenar Company, we bring together talented employees from
+            various regions of India to collaborate and produce exceptional
+            work.
           </p>
 
           <button className="px-6 py-2 rounded-md bg-orange-500 text-white font-medium shadow hover:bg-orange-600 transition">
@@ -383,5 +389,3 @@ function WorkingAtAkdenar() {
     </section>
   );
 }
-
-

@@ -9,7 +9,7 @@ export async function POST(request: NextRequest) {
         // Validate request body
         const validationResult = await validateBody(createContactSchema, request);
 
-        if (validationResult instanceof NextResponse) {
+        if (validationResult instanceof NextResponse) { 
             return validationResult;
         }
 
@@ -56,6 +56,30 @@ export async function POST(request: NextRequest) {
             {
                 success: false,
                 error: 'Failed to submit message'
+            },
+            { status: 500 }
+        );
+    }
+}
+
+export async function GET() {
+    try {
+        await connectDB();
+        const contacts = await Contact.find().sort({ createdAt: -1 });
+
+        return NextResponse.json(
+            {
+                success: true,
+                data: contacts
+            },
+            { status: 200 }
+        );
+    } catch (error) {
+        console.error('Error fetching contacts:', error);
+        return NextResponse.json(
+            {
+                success: false,
+                error: 'Failed to fetch contacts'
             },
             { status: 500 }
         );
