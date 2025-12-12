@@ -5,7 +5,7 @@ import { Sidebar, SidebarContent } from "@/components/ui/sidebar";
 import { NavProjects } from "./nav-project";
 
 // This is sample data.
-import { Mail, Briefcase, Newspaper, FileText } from "lucide-react";
+import { Mail, Briefcase, Newspaper, FileText, MailPlus } from "lucide-react";
 
 const data = {
   projects: [
@@ -31,6 +31,12 @@ const data = {
       name: "Blog",
       url: "/admin/dashboard/blog",
       icon: Newspaper,
+    },
+
+    {
+      name: "Newsletter",
+      url: "/admin/dashboard/newsletter",
+      icon: MailPlus,
     },
   ],
 };
