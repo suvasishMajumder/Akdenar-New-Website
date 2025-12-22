@@ -215,69 +215,268 @@ function MissionVision() {
 }
 
 function CultureValues() {
-  const stats = [
-    {
-      value: "15+",
-      label: "TEAM MEMBERS",
-      title: "Collaborative Environment",
-      desc: "We work in cross-functional teams where designers, developers, and strategists collaborate daily to solve complex challenges.",
-    },
-    {
-      value: "100+",
-      label: "TRAINING HOURS/YEAR",
-      title: "Continuous Learning",
-      desc: "Professional development is part of our DNA. We provide resources, mentorship, and opportunities to learn new skills.",
-    },
-    {
-      value: "4.8/5",
-      label: "TEAM SATISFACTION",
-      title: "Work-Life Balance",
-      desc: "We believe great work comes from well-rested minds. Flexible schedules and remote work options keep our team energized.",
-    },
-  ];
-
   return (
-    <section className="w-full rounded-xl py-20 px-6 md:px-12 bg-gradient-to-b from-[#F7F9FF] to-white flex flex-col items-center">
-      {/* Heading */}
-      <div className="text-center max-w-2xl mb-16">
-        <h2 className="text-3xl md:text-4xl font-bold mb-4">
+    <section className="w-full py-16 px-6 md:px-12 flex flex-col items-center">
+      {/* Header */}
+      <div className="text-center max-w-2xl mb-12">
+        <h2 className="text-3xl md:text-4xl font-bold mb-3">
           Our Culture & Values
         </h2>
-        <p className="text-gray-600 text-sm md:text-base">
+        <p className="text-sm text-gray-600">
           Building a workplace where talent thrives and innovation flourishes
         </p>
       </div>
 
-      {/* Stats Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-6xl mb-12">
-        {stats.map((item, idx) => (
-          <div
-            key={idx}
-            className="bg-white rounded-2xl p-8 shadow-md border border-gray-100 hover:shadow-xl transition"
-          >
-            <h3 className="text-4xl font-bold text-orange-600">{item.value}</h3>
-            <p className="text-xs font-semibold tracking-wide text-gray-500 mt-1 mb-4">
-              {item.label}
+      {/* Statistics Cards */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-5xl mb-16">
+        {/* Card 1: Team Members */}
+        <div className="bg-white rounded-xl p-8 shadow-md border border-gray-200 hover:shadow-xl transition-shadow">
+          <div className="mb-4">
+            <h3 className="text-4xl font-bold text-orange-500 mb-1">15+</h3>
+            <p className="text-xs text-gray-500 uppercase tracking-wide">
+              TEAM MEMBERS
             </p>
-
-            <h4 className="font-semibold text-lg mb-2">{item.title}</h4>
-            <p className="text-gray-600 text-sm leading-relaxed">{item.desc}</p>
           </div>
-        ))}
+          <h4 className="text-lg font-semibold mb-2">
+            Collaborative Environment
+          </h4>
+          <p className="text-sm text-gray-600 leading-relaxed">
+            We work in cross-functional teams where designers, developers, and
+            strategists collaborate daily to solve complex challenges.
+          </p>
+        </div>
+
+        {/* Card 2: Training Hours */}
+        <div className="bg-white rounded-xl p-8 shadow-md border border-gray-200 hover:shadow-xl transition-shadow">
+          <div className="mb-4">
+            <h3 className="text-4xl font-bold text-orange-500 mb-1">100+</h3>
+            <p className="text-xs text-gray-500 uppercase tracking-wide">
+              TRAINING HOURS/YEAR
+            </p>
+          </div>
+          <h4 className="text-lg font-semibold mb-2">Continuous Learning</h4>
+          <p className="text-sm text-gray-600 leading-relaxed">
+            Professional development is part of our DNA. We provide resources,
+            mentorship, and opportunities to learn new skills.
+          </p>
+        </div>
+
+        {/* Card 3: Team Satisfaction */}
+        <div className="bg-white rounded-xl p-8 shadow-md border border-gray-200 hover:shadow-xl transition-shadow">
+          <div className="mb-4">
+            <h3 className="text-4xl font-bold text-orange-500 mb-1">4.8/5</h3>
+            <p className="text-xs text-gray-500 uppercase tracking-wide">
+              TEAM SATISFACTION
+            </p>
+          </div>
+          <h4 className="text-lg font-semibold mb-2">Work-Life Balance</h4>
+          <p className="text-sm text-gray-600 leading-relaxed">
+            We believe great work comes from well-rested minds. Flexible
+            schedules and remote work options keep our team energized.
+          </p>
+        </div>
       </div>
 
-      {/* Bottom Images */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-6xl">
-        <img
-          src="/home-page/ourculture1.png"
-          alt="Team working"
-          className="rounded-2xl shadow-md object-cover w-full h-64 md:h-80"
-        />
-        <img
-          src="/home-page/ourculture2.png"
-          alt="Developer at work"
-          className="rounded-2xl shadow-md object-cover w-full h-64 md:h-80"
-        />
+      <div className="text-center max-w-3xl mb-8">
+        <p className="text-sm text-gray-600 mb-2">
+          Our guiding cardinal principles at Akdenar
+        </p>
+        <h2 className="text-3xl md:text-4xl font-bold mb-4">
+          Only the paranoid survive
+        </h2>
+      </div>
+
+      {/* First Div: Our Foundations - What We Stand For */}
+      <div className="w-full max-w-5xl mb-16">
+        <h3 className="text-2xl font-bold mb-6">
+          Our Foundations: What We Stand For
+        </h3>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+          {/* Left: Text Content */}
+          <div className="text-gray-700 leading-relaxed text-sm md:text-base space-y-4">
+            <p>
+              At Akdenar, our culture is grounded in principles that define how
+              we work, how we create, and how we grow together.
+            </p>
+
+            <ul className="space-y-3 list-none">
+              <li className="flex gap-2">
+                <span className="text-orange-500 font-bold mt-1">•</span>
+                <span>
+                  <strong>Purpose over Profit</strong> — Every initiative at
+                  Akdenar, including Labs and Deshmitra, is built with intention
+                  to create lasting value for people, communities, and the
+                  ecosystem.
+                </span>
+              </li>
+
+              <li className="flex gap-2">
+                <span className="text-orange-500 font-bold mt-1">•</span>
+                <span>
+                  <strong>Curiosity & Continuous Learning</strong> — We grow by
+                  asking questions, experimenting, iterating, and learning from
+                  both success and failure.
+                </span>
+              </li>
+
+              <li className="flex gap-2">
+                <span className="text-orange-500 font-bold mt-1">•</span>
+                <span>
+                  <strong>Empathy & Integrity</strong> — Respect, honesty, and
+                  transparency guide how we work, communicate, and collaborate.
+                </span>
+              </li>
+
+              <li className="flex gap-2">
+                <span className="text-orange-500 font-bold mt-1">•</span>
+                <span>
+                  <strong>Ownership & Accountability</strong> — We trust
+                  individuals to take responsibility for their work and
+                  contribute meaningfully to shared outcomes.
+                </span>
+              </li>
+
+              <li className="flex gap-2">
+                <span className="text-orange-500 font-bold mt-1">•</span>
+                <span>
+                  <strong>Sustainability & Long-Term Thinking</strong> — We
+                  prioritize responsible decisions and long-term impact over
+                  short-term gains.
+                </span>
+              </li>
+
+              <li className="flex gap-2">
+                <span className="text-orange-500 font-bold mt-1">•</span>
+                <span>
+                  <strong>Collaboration & Inclusivity</strong> — Diverse
+                  perspectives and inclusive collaboration across teams
+                  strengthen outcomes.
+                </span>
+              </li>
+            </ul>
+          </div>
+
+          {/* Right: Person Image */}
+          <div className="flex justify-center items-start">
+            <img
+              src="/person.png"
+              alt="Our Foundation"
+              className=" w-full max-w-sm object-contain"
+            />
+          </div>
+        </div>
+      </div>
+
+      {/* Second Div: If you are an employee at Akdenar */}
+      <div className="w-full max-w-5xl mb-16">
+        <h3 className="text-xl font-bold mb-6">
+          If you are an employee at Akdenar, or are considering working at
+          Akdenar, please remember that...
+        </h3>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {/* Left Side */}
+          <div className="space-y-4">
+            <div className="grid grid-cols-2 gap-4">
+              <img
+                src="/girl1.png"
+                alt="Team member 1"
+                className="w-full h-48 aspect-square rounded-lg object-contain"
+              />
+              <img
+                src="/girl2.png"
+                alt="Team member 2"
+                className="w-full h-45 aspect-square rounded-lg object-contain"
+              />
+            </div>
+
+            <div className="text-sm text-gray-700 leading-relaxed space-y-3">
+              <p className="font-semibold text-base">
+                to push you beyond comfort...
+              </p>
+              <p>
+                We don&apos;t hire to keep you safe. We hire to challenge you,
+                to push you into situations where you can expand who you
+                are—intellectually, professionally, and sometimes even
+                emotionally. But this isn&apos;t arbitrary. We push because we
+                believe you&apos;re capable. And sometimes you&apos;ll need to
+                push back—and that&apos;s OK. If you grow here, it&apos;s your
+                win, not ours. You own that.
+              </p>
+            </div>
+          </div>
+
+          {/* Right Side */}
+          <div className="space-y-4">
+            <div className="grid grid-cols-2 gap-4">
+              <img
+                src="/girl3.png"
+                alt="Team member 3"
+                className="w-full h-48 aspect-square rounded-lg object-contain mt-20"
+              />
+              <img
+                src="/girl4.png"
+                alt="Team member 4"
+                className="w-full h-48 aspect-square rounded-lg object-contain mt-49"
+              />
+            </div>
+
+            <div className="text-sm text-gray-700 leading-relaxed space-y-3">
+              <p className="font-semibold text-base">
+                ...and for you to fail in love with the journey
+              </p>
+              <p>
+                We want every Akdenar line writer to come each day not out of
+                duty, but because the problem excites you. When you&apos;re
+                deeply invested in a mission, it changes the output and whether
+                you stay through obstacles. We want you to feel deeply aligned
+                with the &apos;why&apos; behind your work. If you don&apos;t —
+                let&apos;s talk.
+              </p>
+              <p>
+                If you can&apos;t name one meaningful contribution you made last
+                quarter, it&apos;s time to re-evaluate. Work is too precious to
+                drift.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Third Div: Us before I */}
+      <div className="w-full max-w-5xl">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+          {/* Left Side: Text */}
+          <div className="space-y-4 text-sm text-gray-700 leading-relaxed">
+            <p className="font-semibold text-2xl mb-4">
+              &quot;Us&quot; before &quot;I&quot;
+            </p>
+            <p>
+              At Akdenar, don&apos;t shy away from the collective. You&apos;re a
+              mountain climber, not a lone wolf. Collaboration isn&apos;t
+              soft—it&apos;s the sharpest competitive advantage we have. You
+              bring your brilliance; your teammates bring theirs. Together, we
+              dominate the market. Individually? We stall.
+            </p>
+            <p>
+              We don&apos;t hire stars to be stars. We hire them to be
+              multipliers. If you&apos;re the smartest person in the room and
+              hiding the playbook or hoarding the credit, you&apos;ve violated
+              our most fundamental tenet. Coaching, mentoring, and ruthlessly
+              pursuing team velocity—that&apos;s how we win.
+            </p>
+          </div>
+
+          {/* Right Side: Mountain Image */}
+          <div className="flex justify-center">
+            <img
+              src="/Mountain.png"
+              alt="Mountain - teamwork"
+              className="w-full max-w-md rounded-lg object-cover"
+            />
+          </div>
+        </div>
       </div>
     </section>
   );
@@ -367,14 +566,20 @@ function WorkingAtAkdenar() {
         {/* Left Content */}
         <div>
           <p className="text-gray-700 text-sm md:text-base leading-relaxed mb-6 max-w-md">
-            At Akdenar Company, we bring together talented employees from
-            various regions of India to collaborate and produce exceptional
-            work.
+            At Akdenar Company, we unite highly skilled professionals from
+            diverse regions across India, fostering a collaborative environment
+            where innovation, expertise, and creativity come together. By
+            leveraging varied perspectives and deep domain knowledge, our teams
+            consistently deliver high-quality, forward-thinking solutions that
+            drive exceptional results for our clients and partners.
           </p>
 
-          <button className="px-6 py-2 rounded-md bg-orange-500 text-white font-medium shadow hover:bg-orange-600 transition">
+          {/* <Link
+            href="/about"
+            className="px-6 py-2 rounded-md bg-orange-500 text-white font-medium shadow hover:bg-orange-600 transition inline-block"
+          >
             Explore
-          </button>
+          </Link> */}
         </div>
 
         {/* Right Image */}
