@@ -2,6 +2,7 @@
 
 import { GithubIcon, Instagram, Mail, Twitter } from "lucide-react";
 import { useState } from "react";
+import Link from "next/link";
 
 export default function Footer() {
   const [email, setEmail] = useState("");
@@ -85,10 +86,38 @@ export default function Footer() {
           <div className="hidden md:block md:pl-10 lg:pl-0">
             <h4 className="font-semibold mb-4">Company</h4>
             <ul className="space-y-2 text-gray-600 text-sm">
-              <li>Home</li>
-              <li>About</li>
-              <li>Careers</li>
-              <li>Blog</li>
+              <li>
+                <Link
+                  href="/"
+                  className="hover:text-orange-500 transition-colors"
+                >
+                  Home
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/about"
+                  className="hover:text-orange-500 transition-colors"
+                >
+                  About
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/careers"
+                  className="hover:text-orange-500 transition-colors"
+                >
+                  Careers
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/blog"
+                  className="hover:text-orange-500 transition-colors"
+                >
+                  Blog
+                </Link>
+              </li>
             </ul>
           </div>
 
@@ -98,25 +127,65 @@ export default function Footer() {
               <div className="sm:hidden mb-2">
                 <h4 className="font-semibold mb-4">Company</h4>
                 <ul className="space-y-2 text-gray-600 text-sm">
-                  <li>Home</li>
-                  <li>About</li>
-                  <li>Careers</li>
-                  <li>Blog</li>
+                  <li>
+                    <Link
+                      href="/"
+                      className="hover:text-orange-500 transition-colors"
+                    >
+                      Home
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/about"
+                      className="hover:text-orange-500 transition-colors"
+                    >
+                      About
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/careers"
+                      className="hover:text-orange-500 transition-colors"
+                    >
+                      Careers
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/blog"
+                      className="hover:text-orange-500 transition-colors"
+                    >
+                      Blog
+                    </Link>
+                  </li>
                 </ul>
               </div>
               <div>
                 <h4 className="font-semibold mb-4">Our Verticals</h4>
                 <ul className="space-y-2 text-gray-600 text-sm mb-6">
                   <li>Deshmitra</li>
-                  <li>Akdenar Labs</li>
+                  <li>
+                    <a
+                      href="https://labs.akdenar.com/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="hover:text-orange-500 transition-colors"
+                    >
+                      Akdenar Labs
+                    </a>
+                  </li>
                 </ul>
               </div>
 
               {/* Get in touch */}
               <div className="flex md:justify-end">
-                <button className=" px-4 sm:px-6 py-2 rounded-md bg-orange-500 text-white font-medium shadow hover:bg-orange-600 h-fit">
+                <Link
+                  href="/contact"
+                  className=" px-4 sm:px-6 py-2 rounded-md bg-orange-500 text-white font-medium shadow hover:bg-orange-600 h-fit"
+                >
                   Get in touch
-                </button>
+                </Link>
               </div>
             </div>
             <div className="bg-gradient-to-br from-orange-50 to-orange-100 p-6 rounded-lg border border-orange-200">
