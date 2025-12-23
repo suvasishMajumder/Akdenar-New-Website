@@ -274,7 +274,7 @@ function BlogTabs() {
       </div>
 
       {/* STICKY TABS + SEARCH */}
-      <div className="sticky top-0 z-50 bg-white border-b border-gray-200 backdrop-blur-md">
+      <div className="sticky top-0 z-40 bg-white border-b border-gray-200 backdrop-blur-md">
         <div className="max-w-5xl mx-auto px-6 py-4 flex flex-col md:flex-row items-center gap-4">
           {/* Tabs */}
           <Tabs defaultValue="general" className="w-full">
