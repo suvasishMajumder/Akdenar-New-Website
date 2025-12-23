@@ -81,7 +81,7 @@ export default function Navbar() {
 
       {/* MOBILE OVERLAY */}
       <div
-        className={`fixed inset-0 bg-black/50 backdrop-blur-sm transition-opacity duration-300 ${
+        className={`fixed inset-0 z-[45] bg-black/50 backdrop-blur-sm transition-opacity duration-300 ${
           open
             ? "opacity-100 pointer-events-auto"
             : "opacity-0 pointer-events-none"
