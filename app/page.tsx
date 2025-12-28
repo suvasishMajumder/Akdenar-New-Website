@@ -1,5 +1,7 @@
+"use client";
 import Footer from "@/components/Footer";
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 const page = () => {
   return (
@@ -22,7 +24,12 @@ export default page;
 function HeroSection() {
   return (
     <section className="w-full flex lg:mt-6 justify-center my-14 md:mt-18 md:mb-14 lg:min-h-screen items-center relative overflow-hidden">
-      <div className="h-[calc(100vh-6rem)] md:h-auto  mt-5 sm:mt-0 mx-2 sm:mx-0 lg:h-[calc(100vh-10rem)] w-full relative">
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        className="h-[calc(100vh-6rem)] md:h-auto  mt-5 sm:mt-0 mx-2 sm:mx-0 lg:h-[calc(100vh-10rem)] w-full relative"
+      >
         <img
           src="/home-page/hero-section-image.png"
           alt=""
@@ -30,7 +37,12 @@ function HeroSection() {
         />
         {/* Glassmorphism Text Overlay */}
         <div className="absolute top-0  left-0 w-full md:w-1/2 h-full ">
-          <div className="p-8 md:p-10 flex flex-col justify-center items-center bg-white/10 backdrop-blur-2xl rounded-3xl h-full ">
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+            className="p-8 md:p-10 flex flex-col justify-center items-center bg-white/10 backdrop-blur-2xl rounded-3xl h-full "
+          >
             {/* Title */}
             <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight">
               Akdenar isn&apos;t just a name
@@ -79,9 +91,9 @@ function HeroSection() {
                 Get in touch
               </Link>
             </div>
-          </div>
+          </motion.div>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }
@@ -112,12 +124,24 @@ function VerticalsSection() {
 
   return (
     <section className="w-full flex flex-col items-center px-3 md:px-10 ">
-      <h2 className="text-3xl font-bold mb-12 text-center">Our Verticals</h2>
+      <motion.h2
+        initial={{ opacity: 0, scale: 0.9 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5 }}
+        className="text-3xl font-bold mb-12 text-center"
+      >
+        Our Verticals
+      </motion.h2>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-6xl">
         {verticals.map((item, index) => (
-          <div
+          <motion.div
             key={index}
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: index * 0.2 }}
             className="rounded-xl p-8 bg-[#F8FAFC] border border-gray-200 shadow-inner hover:shadow-xl transition hover:bg-white"
           >
             {/* Header */}
@@ -138,7 +162,7 @@ function VerticalsSection() {
                 </li>
               ))}
             </ul>
-          </div>
+          </motion.div>
         ))}
       </div>
     </section>
@@ -149,14 +173,26 @@ function MissionVision() {
   return (
     <section className="w-full px-2 md:px-12 py-16 flex flex-col gap-20 ">
       {/* ------------------ MISSION ------------------ */}
-      <div className="bg-white rounded-3xl p-6 md:p-12 shadow-sm border border-gray-200">
+      <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8 }}
+        className="bg-white rounded-3xl p-6 md:p-12 shadow-sm border border-gray-200"
+      >
         <div className="inline-flex flex-col mt-6 mb-4">
           <h2 className="text-2xl md:text-3xl font-bold">Our Mission</h2>
           <div className="h-1 bg-orange-500 rounded-full mt-2"></div>
         </div>
         <div className="flex items-center lg:flex-row flex-col gap-20 justify-center">
           {/* Text */}
-          <p className="text-gray-700 leading-relaxed text-sm md:text-base">
+          <motion.p
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="text-gray-700 leading-relaxed text-sm md:text-base"
+          >
             To build reliable, accessible, and technology-driven solutions that
             simplify everyday life in India.
             <br />
@@ -167,10 +203,14 @@ function MissionVision() {
             multi-domain operations. Through integrity, innovation, and
             customer-centricity, we strive to positively impact millions of
             lives while fostering sustainable growth and opportunities.
-          </p>
+          </motion.p>
 
           {/* Illustration */}
-          <img
+          <motion.img
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.4 }}
             src="/home-page/ourmission1.png"
             alt=" our mission image"
             className="h-80"
@@ -186,14 +226,24 @@ function MissionVision() {
 
         <div className="flex items-center lg:flex-row flex-col-reverse gap-20 justify-center">
           {/* Illustration */}
-          <img
+          <motion.img
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
             src="/home-page/ourmission2.png"
             alt="our vision"
             className="h-80 order-last md:order-first"
           />
 
           {/* Text */}
-          <p className="text-gray-700 leading-relaxed text-sm md:text-base">
+          <motion.p
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="text-gray-700 leading-relaxed text-sm md:text-base"
+          >
             To become one of India’s most trusted and forward-thinking
             conglomerates, shaping the future through innovation, speed, and
             service excellence.
@@ -207,9 +257,9 @@ function MissionVision() {
             Our long-term vision is to create a unified network of platforms
             that enrich everyday experiences, empower local economies, and
             inspire progress across the country.
-          </p>
+          </motion.p>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }
@@ -218,76 +268,87 @@ function CultureValues() {
   return (
     <section className="w-full py-16 px-6 md:px-12 flex flex-col items-center">
       {/* Header */}
-      <div className="text-center max-w-2xl mb-12">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        className="text-center max-w-2xl mb-12"
+      >
         <h2 className="text-3xl md:text-4xl font-bold mb-3">
           Our Culture & Values
         </h2>
         <p className="text-sm text-gray-600">
           Building a workplace where talent thrives and innovation flourishes
         </p>
-      </div>
+      </motion.div>
 
       {/* Statistics Cards */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-5xl mb-16">
-        {/* Card 1: Team Members */}
-        <div className="bg-white rounded-xl p-8 shadow-md border border-gray-200 hover:shadow-xl transition-shadow">
-          <div className="mb-4">
-            <h3 className="text-4xl font-bold text-orange-500 mb-1">15+</h3>
-            <p className="text-xs text-gray-500 uppercase tracking-wide">
-              TEAM MEMBERS
-            </p>
-          </div>
-          <h4 className="text-lg font-semibold mb-2">
-            Collaborative Environment
-          </h4>
-          <p className="text-sm text-gray-600 leading-relaxed">
-            We work in cross-functional teams where designers, developers, and
-            strategists collaborate daily to solve complex challenges.
-          </p>
-        </div>
-
-        {/* Card 2: Training Hours */}
-        <div className="bg-white rounded-xl p-8 shadow-md border border-gray-200 hover:shadow-xl transition-shadow">
-          <div className="mb-4">
-            <h3 className="text-4xl font-bold text-orange-500 mb-1">100+</h3>
-            <p className="text-xs text-gray-500 uppercase tracking-wide">
-              TRAINING HOURS/YEAR
-            </p>
-          </div>
-          <h4 className="text-lg font-semibold mb-2">Continuous Learning</h4>
-          <p className="text-sm text-gray-600 leading-relaxed">
-            Professional development is part of our DNA. We provide resources,
-            mentorship, and opportunities to learn new skills.
-          </p>
-        </div>
-
-        {/* Card 3: Team Satisfaction */}
-        <div className="bg-white rounded-xl p-8 shadow-md border border-gray-200 hover:shadow-xl transition-shadow">
-          <div className="mb-4">
-            <h3 className="text-4xl font-bold text-orange-500 mb-1">4.8/5</h3>
-            <p className="text-xs text-gray-500 uppercase tracking-wide">
-              TEAM SATISFACTION
-            </p>
-          </div>
-          <h4 className="text-lg font-semibold mb-2">Work-Life Balance</h4>
-          <p className="text-sm text-gray-600 leading-relaxed">
-            We believe great work comes from well-rested minds. Flexible
-            schedules and remote work options keep our team energized.
-          </p>
-        </div>
+        {[
+          {
+            val: "15+",
+            label: "TEAM MEMBERS",
+            title: "Collaborative Environment",
+            desc: "We work in cross-functional teams where designers, developers, and strategists collaborate daily to solve complex challenges.",
+          },
+          {
+            val: "100+",
+            label: "TRAINING HOURS/YEAR",
+            title: "Continuous Learning",
+            desc: "Professional development is part of our DNA. We provide resources, mentorship, and opportunities to learn new skills.",
+          },
+          {
+            val: "4.8/5",
+            label: "TEAM SATISFACTION",
+            title: "Work-Life Balance",
+            desc: "We believe great work comes from well-rested minds. Flexible schedules and remote work options keep our team energized.",
+          },
+        ].map((stat, idx) => (
+          <motion.div
+            key={idx}
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: idx * 0.1 }}
+            className="bg-white rounded-xl p-8 shadow-md border border-gray-200 hover:shadow-xl transition-shadow"
+          >
+            <div className="mb-4">
+              <h3 className="text-4xl font-bold text-orange-500 mb-1">
+                {stat.val}
+              </h3>
+              <p className="text-xs text-gray-500 uppercase tracking-wide">
+                {stat.label}
+              </p>
+            </div>
+            <h4 className="text-lg font-semibold mb-2">{stat.title}</h4>
+            <p className="text-sm text-gray-600 leading-relaxed">{stat.desc}</p>
+          </motion.div>
+        ))}
       </div>
 
-      <div className="text-center max-w-3xl mb-8">
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+        className="text-center max-w-3xl mb-8"
+      >
         <p className="text-sm text-gray-600 mb-2">
           Our guiding cardinal principles at Akdenar
         </p>
         <h2 className="text-3xl md:text-4xl font-bold mb-4">
           Only the paranoid survive
         </h2>
-      </div>
+      </motion.div>
 
       {/* First Div: Our Foundations - What We Stand For */}
-      <div className="w-full max-w-5xl mb-16">
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8 }}
+        className="w-full max-w-5xl mb-16"
+      >
         <h3 className="text-2xl font-bold mb-6">
           Our Foundations: What We Stand For
         </h3>
@@ -301,75 +362,74 @@ function CultureValues() {
             </p>
 
             <ul className="space-y-3 list-none">
-              <li className="flex gap-2">
-                <span className="text-orange-500 font-bold mt-1">•</span>
-                <span>
-                  <strong>Purpose over Profit</strong> — Every initiative at
-                  Akdenar, including Labs and Deshmitra, is built with intention
-                  to create lasting value for people, communities, and the
-                  ecosystem.
-                </span>
-              </li>
-
-              <li className="flex gap-2">
-                <span className="text-orange-500 font-bold mt-1">•</span>
-                <span>
-                  <strong>Curiosity & Continuous Learning</strong> — We grow by
-                  asking questions, experimenting, iterating, and learning from
-                  both success and failure.
-                </span>
-              </li>
-
-              <li className="flex gap-2">
-                <span className="text-orange-500 font-bold mt-1">•</span>
-                <span>
-                  <strong>Empathy & Integrity</strong> — Respect, honesty, and
-                  transparency guide how we work, communicate, and collaborate.
-                </span>
-              </li>
-
-              <li className="flex gap-2">
-                <span className="text-orange-500 font-bold mt-1">•</span>
-                <span>
-                  <strong>Ownership & Accountability</strong> — We trust
-                  individuals to take responsibility for their work and
-                  contribute meaningfully to shared outcomes.
-                </span>
-              </li>
-
-              <li className="flex gap-2">
-                <span className="text-orange-500 font-bold mt-1">•</span>
-                <span>
-                  <strong>Sustainability & Long-Term Thinking</strong> — We
-                  prioritize responsible decisions and long-term impact over
-                  short-term gains.
-                </span>
-              </li>
-
-              <li className="flex gap-2">
-                <span className="text-orange-500 font-bold mt-1">•</span>
-                <span>
-                  <strong>Collaboration & Inclusivity</strong> — Diverse
-                  perspectives and inclusive collaboration across teams
-                  strengthen outcomes.
-                </span>
-              </li>
+              {[
+                {
+                  title: "Purpose over Profit",
+                  desc: "Every initiative at Akdenar, including Labs and Deshmitra, is built with intention to create lasting value for people, communities, and the ecosystem.",
+                },
+                {
+                  title: "Curiosity & Continuous Learning",
+                  desc: "We grow by asking questions, experimenting, iterating, and learning from both success and failure.",
+                },
+                {
+                  title: "Empathy & Integrity",
+                  desc: "Respect, honesty, and transparency guide how we work, communicate, and collaborate.",
+                },
+                {
+                  title: "Ownership & Accountability",
+                  desc: "We trust individuals to take responsibility for their work and contribute meaningfully to shared outcomes.",
+                },
+                {
+                  title: "Sustainability & Long-Term Thinking",
+                  desc: "We prioritize responsible decisions and long-term impact over short-term gains.",
+                },
+                {
+                  title: "Collaboration & Inclusivity",
+                  desc: "Diverse perspectives and inclusive collaboration across teams strengthen outcomes.",
+                },
+              ].map((item, idx) => (
+                <motion.li
+                  key={idx}
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: idx * 0.1 }}
+                  className="flex gap-2"
+                >
+                  <span className="text-orange-500 font-bold mt-1">•</span>
+                  <span>
+                    <strong>{item.title}</strong> — {item.desc}
+                  </span>
+                </motion.li>
+              ))}
             </ul>
           </div>
 
           {/* Right: Person Image */}
-          <div className="flex justify-center items-start">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="flex justify-center items-start"
+          >
             <img
               src="/person.png"
               alt="Our Foundation"
               className=" w-full max-w-sm object-contain"
             />
-          </div>
+          </motion.div>
         </div>
-      </div>
+      </motion.div>
 
       {/* Second Div: If you are an employee at Akdenar */}
-      <div className="w-full max-w-5xl mb-16">
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8 }}
+        className="w-full max-w-5xl mb-16"
+      >
         <h3 className="text-xl font-bold mb-6">
           If you are an employee at Akdenar, or are considering working at
           Akdenar, please remember that...
@@ -379,12 +439,18 @@ function CultureValues() {
           {/* Left Side */}
           <div className="space-y-4">
             <div className="grid grid-cols-2 gap-4">
-              <img
+              <motion.img
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
                 src="/girl1.png"
                 alt="Team member 1"
                 className="w-full h-48 aspect-square rounded-lg object-contain"
               />
-              <img
+              <motion.img
+                initial={{ opacity: 0, x: 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
                 src="/girl2.png"
                 alt="Team member 2"
                 className="w-full h-45 aspect-square rounded-lg object-contain"
@@ -410,15 +476,21 @@ function CultureValues() {
           {/* Right Side */}
           <div className="space-y-4">
             <div className="grid grid-cols-2 gap-4">
-              <img
+              <motion.img
+                initial={{ opacity: 0, x: -20, y: 20 }}
+                whileInView={{ opacity: 1, x: 0, y: 0 }}
+                viewport={{ once: true }}
                 src="/girl3.png"
                 alt="Team member 3"
-                className="w-full h-48 aspect-square rounded-lg object-contain mt-20"
+                className="w-full h-48 aspect-square rounded-lg object-contain md:mt-20"
               />
-              <img
+              <motion.img
+                initial={{ opacity: 0, x: 20, y: 20 }}
+                whileInView={{ opacity: 1, x: 0, y: 0 }}
+                viewport={{ once: true }}
                 src="/girl4.png"
                 alt="Team member 4"
-                className="w-full h-48 aspect-square rounded-lg object-contain mt-49"
+                className="w-full h-48 aspect-square rounded-lg object-contain md:mt-40"
               />
             </div>
 
@@ -442,10 +514,16 @@ function CultureValues() {
             </div>
           </div>
         </div>
-      </div>
+      </motion.div>
 
       {/* Third Div: Us before I */}
-      <div className="w-full max-w-5xl">
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8 }}
+        className="w-full max-w-5xl"
+      >
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
           {/* Left Side: Text */}
           <div className="space-y-4 text-sm text-gray-700 leading-relaxed">
@@ -469,15 +547,20 @@ function CultureValues() {
           </div>
 
           {/* Right Side: Mountain Image */}
-          <div className="flex justify-center">
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="flex justify-center"
+          >
             <img
               src="/Mountain.png"
               alt="Mountain - teamwork"
               className="w-full max-w-md rounded-lg object-cover"
             />
-          </div>
+          </motion.div>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }
@@ -519,25 +602,54 @@ function OurJourney() {
   return (
     <section className="w-full px-2 md:px-10 flex flex-col items-center">
       {/* Heading */}
-      <div className="text-center max-w-2xl mb-16">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        className="text-center max-w-2xl mb-16"
+      >
         <h2 className="text-3xl md:text-4xl font-bold mb-3">Our Journey</h2>
         <p className="text-gray-600 text-sm md:text-base">
           Key milestones in our mission to solve real-world problems.
         </p>
-      </div>
+      </motion.div>
 
       {/* Timeline */}
       <div className="relative w-full max-w-4xl">
         {/* Vertical Line */}
-        <div className="absolute left-8 md:left-12 top-0 h-full w-[2px] bg-gray-300"></div>
+        <motion.div
+          initial={{ height: 0 }}
+          whileInView={{ height: "100%" }}
+          viewport={{ once: true }}
+          transition={{ duration: 1.5, ease: "easeInOut" }}
+          className="absolute left-8 md:left-12 top-0 w-[2px] bg-gray-300"
+        ></motion.div>
 
         <div className="space-y-10">
           {timeline.map((item, index) => (
-            <div key={index} className="relative pl-20 md:pl-28">
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+              className="relative pl-20 md:pl-28"
+            >
               {/* Dot (Year Circle) */}
-              <div className="absolute left-3 md:left-7 w-10 h-10 rounded-full bg-blue-600 text-white flex items-center justify-center font-semibold shadow-md">
+              <motion.div
+                initial={{ scale: 0 }}
+                whileInView={{ scale: 1 }}
+                viewport={{ once: true }}
+                transition={{
+                  type: "spring",
+                  stiffness: 260,
+                  damping: 20,
+                  delay: index * 0.1 + 0.2,
+                }}
+                className="absolute left-3 md:left-7 w-10 h-10 rounded-full bg-blue-600 text-white flex items-center justify-center font-semibold shadow-md"
+              >
                 {item.year}
-              </div>
+              </motion.div>
 
               {/* Content */}
               <div>
@@ -546,7 +658,7 @@ function OurJourney() {
                   {item.desc}
                 </p>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
@@ -558,13 +670,23 @@ function WorkingAtAkdenar() {
   return (
     <section className="w-full px-6 md:px-12 py-20">
       {/* Heading */}
-      <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
+      <motion.h2
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        className="text-3xl md:text-4xl font-bold text-center mb-12"
+      >
         Working at Akdenar
-      </h2>
+      </motion.h2>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center max-w-6xl mx-auto">
         {/* Left Content */}
-        <div>
+        <motion.div
+          initial={{ opacity: 0, x: -30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
           <p className="text-gray-700 text-sm md:text-base leading-relaxed mb-6 max-w-md">
             At Akdenar Company, we unite highly skilled professionals from
             diverse regions across India, fostering a collaborative environment
@@ -573,23 +695,22 @@ function WorkingAtAkdenar() {
             consistently deliver high-quality, forward-thinking solutions that
             drive exceptional results for our clients and partners.
           </p>
-
-          {/* <Link
-            href="/about"
-            className="px-6 py-2 rounded-md bg-orange-500 text-white font-medium shadow hover:bg-orange-600 transition inline-block"
-          >
-            Explore
-          </Link> */}
-        </div>
+        </motion.div>
 
         {/* Right Image */}
-        <div className="flex justify-center md:justify-end">
+        <motion.div
+          initial={{ opacity: 0, x: 30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="flex justify-center md:justify-end"
+        >
           <img
             src="/home-page/team.png"
             alt="Working at Akdenar"
             className="w-full max-w-md rounded-2xl shadow-md object-cover"
           />
-        </div>
+        </motion.div>
       </div>
     </section>
   );

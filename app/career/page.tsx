@@ -36,6 +36,7 @@ import {
   Briefcase,
 } from "lucide-react";
 import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 
 const page = () => {
   return (
@@ -56,7 +57,12 @@ export default page;
 function InnovationHero() {
   return (
     <section className="w-full flex lg:mt-6 justify-center my-14 md:mt-18 md:mb-14 lg:min-h-screen rounded-3xl items-center relative overflow-hidden">
-      <div className="h-[calc(100vh-6rem)] md:h-auto  mt-5 sm:mt-0 mx-2 sm:mx-0 lg:h-[calc(100vh-10rem)] w-full relative">
+      <motion.div
+        initial={{ opacity: 0, scale: 1.1 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 1.2, ease: "easeOut" }}
+        className="h-[calc(100vh-6rem)] md:h-auto  mt-5 sm:mt-0 mx-2 sm:mx-0 lg:h-[calc(100vh-10rem)] w-full relative"
+      >
         <img
           src="/career-page/hero-img.png"
           alt="Background"
@@ -71,7 +77,10 @@ function InnovationHero() {
           px-4 sm:px-6
         "
         >
-          <div
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.5, ease: "easeOut" }}
             className="
             w-full max-w-4xl xl:max-w-5xl
             bg-white/10 backdrop-blur-2xl 
@@ -110,9 +119,9 @@ function InnovationHero() {
               to co-create solutions that shape a brighter, more connected
               future.
             </p>
-          </div>
+          </motion.div>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }
@@ -169,19 +178,29 @@ function WhyJoin() {
   return (
     <section className="w-full px-6 md:px-12 py-20 max-w-7xl mx-auto">
       {/* Heading */}
-      <div className="text-center max-w-2xl mx-auto mb-16">
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8 }}
+        className="text-center max-w-2xl mx-auto mb-16"
+      >
         <h2 className="text-3xl md:text-4xl font-bold">Why Join Our Team</h2>
         <p className="text-gray-600 text-sm md:text-base mt-3">
           We offer more than just a job, we provide an opportunity to be part of
           something meaningful.
         </p>
-      </div>
+      </motion.div>
 
       {/* Perks Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {perks.map((item, i) => (
-          <div
+          <motion.div
             key={i}
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: i * 0.1 }}
             className="
               bg-white border border-gray-200 rounded-2xl 
               p-6 shadow-sm 
@@ -198,7 +217,7 @@ function WhyJoin() {
 
             {/* Description */}
             <p className="text-gray-600 text-sm leading-relaxed">{item.desc}</p>
-          </div>
+          </motion.div>
         ))}
       </div>
     </section>
@@ -291,123 +310,140 @@ function OpenPositions() {
     <div className="lg:bg-gray-50 p-10 rounded-md">
       <div className="container mx-auto">
         {/* Header */}
-        <div className="text-center mb-12">
+        <motion.div
+           initial={{ opacity: 0, y: 30 }}
+           whileInView={{ opacity: 1, y: 0 }}
+           viewport={{ once: true }}
+           transition={{ duration: 0.8 }}
+           className="text-center mb-12"
+        >
           <h1 className="text-4xl font-bold text-black">Open Positions</h1>
           <p className="text-gray-600 mt-2">
             Join our mission and build the future
           </p>
-        </div>
+        </motion.div>
 
         {jobs.length === 0 ? (
-          <div className="text-center py-12">
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="text-center py-12"
+          >
             <p className="text-gray-500">
               No open positions at the moment. Check back soon!
             </p>
-          </div>
+          </motion.div>
         ) : (
           <>
             {/* Cards Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 gap-8">
-              {jobs.map((opening) => (
-                <Card
-                  key={opening._id}
-                  className="w-full h-full bg-white border border-gray-200 shadow-sm hover:shadow-lg transition-all duration-300 rounded-xl flex flex-col"
+              {jobs.map((opening, index) => (
+                <motion.div
+                   key={opening._id}
+                   initial={{ opacity: 0, scale: 0.95, y: 20 }}
+                   whileInView={{ opacity: 1, scale: 1, y: 0 }}
+                   viewport={{ once: true }}
+                   transition={{ duration: 0.5, delay: index * 0.1 }}
                 >
-                  {/* Header */}
-                  <CardHeader>
-                    <div className="flex justify-between items-start">
-                      <div>
-                        <CardTitle className="text-2xl font-semibold text-black">
-                          {opening.title}
-                        </CardTitle>
-                        <CardDescription className="flex items-center gap-2 text-base text-gray-600 mt-1">
-                          <MapPin className="w-4 h-4 text-gray-500" />
-                          {opening.location}
-                        </CardDescription>
-                      </div>
-
-                      {/* Black badge */}
-                      <Badge className="px-3 py-1 bg-black text-white rounded-md">
-                        {opening.type}
-                      </Badge>
-                    </div>
-                  </CardHeader>
-
-                  {/* Body */}
-                  <CardContent className="space-y-4 flex-1">
-                    <p className="text-gray-700 line-clamp-3">
-                      {opening.description}
-                    </p>
-
-                    <div className="grid grid-cols-2 gap-4">
-                      <div className="flex items-center gap-2 text-sm text-gray-700">
-                        <Calendar className="w-4 h-4 text-gray-600" />
-                        Posted: {formatDate(opening.postedAt)}
-                      </div>
-
-                      <div className="flex items-center gap-2 text-sm text-gray-700">
-                        <Clock className="w-4 h-4 text-gray-600" />
-                        Deadline: {formatDate(opening.deadline)}
-                      </div>
-
-                      <div className="flex items-center gap-2 text-sm text-gray-700">
-                        <Users className="w-4 h-4 text-gray-600" />
-                        Positions: {opening.positions}
-                      </div>
-
-                      <div className="flex items-center gap-2 text-sm text-gray-700">
-                        <Briefcase className="w-4 h-4 text-gray-600" />
-                        Exp: {formatExperience(opening.experience)}
-                      </div>
-                    </div>
-
-                    {/* Workplace Type */}
-                    <div className="flex items-center gap-2 text-sm text-gray-700">
-                      <BriefcaseBusiness className="w-4 h-4 text-gray-600" />
-                      <span className="font-medium">
-                        {opening.workplaceType}
-                      </span>
-                    </div>
-
-                    {/* Skills */}
-                    {opening.skills && opening.skills.length > 0 && (
-                      <div>
-                        <div className="flex items-center gap-2 mb-2">
-                          <Award className="w-4 h-4 text-gray-600" />
-                          <span className="text-gray-800 font-medium">
-                            Required Skills
-                          </span>
+                  <Card
+                    className="w-full h-full bg-white border border-gray-200 shadow-sm hover:shadow-lg transition-all duration-300 rounded-xl flex flex-col"
+                  >
+                    {/* Header */}
+                    <CardHeader>
+                      <div className="flex justify-between items-start">
+                        <div>
+                          <CardTitle className="text-2xl font-semibold text-black">
+                            {opening.title}
+                          </CardTitle>
+                          <CardDescription className="flex items-center gap-2 text-base text-gray-600 mt-1">
+                            <MapPin className="w-4 h-4 text-gray-500" />
+                            {opening.location}
+                          </CardDescription>
                         </div>
 
-                        <div className="flex flex-wrap gap-2">
-                          {opening.skills.slice(0, 6).map((skill, index) => (
-                            <Badge
-                              key={index}
-                              className="bg-gray-100 text-gray-800 border border-gray-200"
-                            >
-                              {skill}
-                            </Badge>
-                          ))}
-                          {opening.skills.length > 6 && (
-                            <Badge className="bg-gray-100 text-gray-800 border border-gray-200">
-                              +{opening.skills.length - 6} more
-                            </Badge>
-                          )}
+                        {/* Black badge */}
+                        <Badge className="px-3 py-1 bg-black text-white rounded-md">
+                          {opening.type}
+                        </Badge>
+                      </div>
+                    </CardHeader>
+
+                    {/* Body */}
+                    <CardContent className="space-y-4 flex-1">
+                      <p className="text-gray-700 line-clamp-3">
+                        {opening.description}
+                      </p>
+
+                      <div className="grid grid-cols-2 gap-4">
+                        <div className="flex items-center gap-2 text-sm text-gray-700">
+                          <Calendar className="w-4 h-4 text-gray-600" />
+                          Posted: {formatDate(opening.postedAt)}
+                        </div>
+
+                        <div className="flex items-center gap-2 text-sm text-gray-700">
+                          <Clock className="w-4 h-4 text-gray-600" />
+                          Deadline: {formatDate(opening.deadline)}
+                        </div>
+
+                        <div className="flex items-center gap-2 text-sm text-gray-700">
+                          <Users className="w-4 h-4 text-gray-600" />
+                          Positions: {opening.positions}
+                        </div>
+
+                        <div className="flex items-center gap-2 text-sm text-gray-700">
+                          <Briefcase className="w-4 h-4 text-gray-600" />
+                          Exp: {formatExperience(opening.experience)}
                         </div>
                       </div>
-                    )}
-                  </CardContent>
 
-                  {/* Footer (Orange Button Only) */}
-                  <CardFooter className="mt-auto">
-                    <Button
-                      className="w-full bg-orange-500 hover:bg-orange-600 text-white py-2 rounded-lg"
-                      onClick={() => handleApplyClick(opening)}
-                    >
-                      Apply Now
-                    </Button>
-                  </CardFooter>
-                </Card>
+                      {/* Workplace Type */}
+                      <div className="flex items-center gap-2 text-sm text-gray-700">
+                        <BriefcaseBusiness className="w-4 h-4 text-gray-600" />
+                        <span className="font-medium">
+                          {opening.workplaceType}
+                        </span>
+                      </div>
+
+                      {/* Skills */}
+                      {opening.skills && opening.skills.length > 0 && (
+                        <div>
+                          <div className="flex items-center gap-2 mb-2">
+                            <Award className="w-4 h-4 text-gray-600" />
+                            <span className="text-gray-800 font-medium">
+                              Required Skills
+                            </span>
+                          </div>
+
+                          <div className="flex flex-wrap gap-2">
+                            {opening.skills.slice(0, 6).map((skill, index) => (
+                              <Badge
+                                key={index}
+                                className="bg-gray-100 text-gray-800 border border-gray-200"
+                              >
+                                {skill}
+                              </Badge>
+                            ))}
+                            {opening.skills.length > 6 && (
+                              <Badge className="bg-gray-100 text-gray-800 border border-gray-200">
+                                +{opening.skills.length - 6} more
+                              </Badge>
+                            )}
+                          </div>
+                        </div>
+                      )}
+                    </CardContent>
+
+                    {/* Footer (Orange Button Only) */}
+                    <CardFooter className="mt-auto">
+                      <Button
+                        className="w-full bg-orange-500 hover:bg-orange-600 text-white py-2 rounded-lg"
+                        onClick={() => handleApplyClick(opening)}
+                      >
+                        Apply Now
+                      </Button>
+                    </CardFooter>
+                  </Card>
+                </motion.div>
               ))}
             </div>
           </>
@@ -442,19 +478,29 @@ function WorkHere() {
   ];
 
   return (
-    <section className="w-full px-6 md:px-12 py-20 max-w-7xl mx-auto">
+    <section className="w-full px-6 md:px-12 py-20 max-w-7xl mx-auto overflow-hidden">
       {/* Heading */}
-      <div className="text-center mb-16">
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8 }}
+        className="text-center mb-16"
+      >
         <h2 className="text-2xl md:text-3xl font-bold">
           What It Means to Work Here
         </h2>
-      </div>
+      </motion.div>
 
       {/* Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {values.map((v, i) => (
-          <div
+          <motion.div
             key={i}
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: i * 0.1 }}
             className="
               bg-white border border-gray-200 rounded-2xl 
               p-8 shadow-sm hover:shadow-md transition
@@ -469,7 +515,7 @@ function WorkHere() {
 
             {/* Description */}
             <p className="text-gray-600 text-sm leading-relaxed">{v.desc}</p>
-          </div>
+          </motion.div>
         ))}
       </div>
     </section>
