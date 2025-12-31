@@ -12,7 +12,11 @@ export default function Navbar() {
   return (
     <>
       {/* NAVBAR */}
-      <nav className="w-full z-50 bg-white fixed top-0 border-b border-gray-200">
+      <nav
+        className={`w-full bg-white fixed top-0 border-b border-gray-200 ${
+          open ? "z-40" : "z-50"
+        }`}
+      >
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
           {/* Left Section */}
           <div className="flex items-center gap-6">
